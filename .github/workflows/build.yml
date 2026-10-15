@@ -16,10 +16,14 @@ jobs:
           git clone --recursive https://github.com/theos/theos.git $HOME/theos
           echo "THEOS=$HOME/theos" >> $GITHUB_ENV
 
-      - name: Download iOS SDK
+      - name: Link Xcode SDK
         run: |
           export THEOS=$HOME/theos
-          $THEOS/bin/install-sdk iPhoneOS15.6
+          mkdir -p $THEOS/sdks
+          XCODE_SDK=$(ls -d /Applications/Xcode*.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk | head -1)
+          echo "Using SDK: $XCODE_SDK"
+          ln -sf "$XCODE_SDK" $THEOS/sdks/iPhoneOS.sdk
+          ls -la $THEOS/sdks/
 
       - name: Build package
         run: |
