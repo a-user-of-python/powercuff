@@ -1,0 +1,10 @@
+Package: com.rpetrich.powercuff
+Section: Tweaks
+Maintainer: user
+Architecture: iphoneos-arm64
+Version: 0.2
+Depends: firmware (>= 15.0), mobilesubstrate, preferenceloader
+Description: Select from additional low power device states (rootless)
+Name: Powercuff (Rootless)
+Author: Ryan Petrich (rootless port)
+Tag: purpose::extension
