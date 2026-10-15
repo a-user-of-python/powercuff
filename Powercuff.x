@@ -56,13 +56,14 @@ static void ApplyThermals(void)
 
 - (id)initProduct:(id)data
 {
-	if ((self = %orig())) {
-		if ([self respondsToSelector:@selector(putDeviceInThermalSimulationMode:)]) {
-			currentProduct = self;
+	id result = %orig;
+	if (result) {
+		if ([result respondsToSelector:@selector(putDeviceInThermalSimulationMode:)]) {
+			currentProduct = result;
 			ApplyThermals();
 		}
 	}
-	return self;
+	return result;
 }
 
 - (void)dealloc
